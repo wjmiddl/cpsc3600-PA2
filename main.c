@@ -5,6 +5,7 @@
   
 int main(int argc, char *argv[]) 
 {
+    //declarations
     int opt;
     char * ptr;
     int pingPacketCount = 0x7fffffff;
@@ -13,10 +14,13 @@ int main(int argc, char *argv[])
     int sizeInBytes = 12;
     int noPrint = 0;
     int server = 0;
+
+    //loop to store all command arguments
     while((opt = getopt(argc, argv, ":if:lrx")) != -1) 
     {
+        //values stored according to flag found
         switch(opt) 
-        { 
+        {
             case 'c':
                 pingPacketCount = atoi(optarg);
                 break;  
@@ -37,6 +41,4 @@ int main(int argc, char *argv[])
                 break; 
         } 
     }
-
-    return 0;
 }
