@@ -1,37 +1,39 @@
 #include <stdio.h> 
-#include <unistd.h> 
+#include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
   
 int main(int argc, char *argv[]) 
 {
     int opt;
-    char * flags;
-    int pingPacketCount = 0x7fffffff
+    char * ptr;
+    int pingPacketCount = 0x7fffffff;
     double pingInterval = 1.0;
     int portNumber = 33333;
     int sizeInBytes = 12;
     int noPrint = 0;
     int server = 0;
-    while((opt = getopt(argc, argv, “:if:lrx”)) != -1) 
+    while((opt = getopt(argc, argv, ":if:lrx")) != -1) 
     {
         switch(opt) 
         { 
-            case ‘c’:
-
+            case 'c':
+                pingPacketCount = atoi(optarg);
                 break;  
-            case ‘i’: 
-
+            case 'i': 
+                pingInterval = strtod(optarg, &ptr);
                 break;
-            case ‘p’: 
-
+            case 'p': 
+                portNumber = atoi(optarg);
                 break; 
-            case ‘s’: 
-                
+            case 's': 
+                sizeInBytes = atoi(optarg);
                 break; 
-            case ‘n’: 
-                
+            case 'n': 
+                noPrint++;
                 break; 
-            case ‘S’: 
-                
+            case 'S': 
+                server++;
                 break; 
         } 
     }
