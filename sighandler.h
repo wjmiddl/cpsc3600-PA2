@@ -9,8 +9,8 @@
 
 void sighandler(int signum)
 {
-    printf("Signal caught");
-    exit(1);
+    printf("Caught signal: %d", signum);
+    exit(0);
 }
 
 #endif
