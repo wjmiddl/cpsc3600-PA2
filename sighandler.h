@@ -9,7 +9,7 @@
 
 void sighandler(int signum)
 {
-    printf("Caught signal: %d", signum);
+    printf("Caught signal: %d\n", signum);
     exit(0);
 }
 

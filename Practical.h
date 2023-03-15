@@ -5,6 +5,15 @@
 #include <stdio.h>
 #include <sys/socket.h>
 
+struct arg_struct{
+  int pingPacketCount;
+  double pingInterval;
+  int portNumber;
+  int sizeInBytes;
+  int noPrint;
+  int server;
+};
+
 // Handle error with user msg
 void DieWithUserMessage(const char *msg, const char *detail);
 // Handle error with sys msg

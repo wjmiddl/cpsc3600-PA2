@@ -1,7 +1,5 @@
 #include "sighandler.h"
-#include "UDPEchoClient.c"
-#include "UDPEchoServer.c"
-#include <thread.h>
+#include "Practical.h"
 
 int main(int argc, char *argv[]) 
 {
@@ -11,42 +9,53 @@ int main(int argc, char *argv[])
     //declarations
     int opt;
     char * ptr;
-    int pingPacketCount = 0x7fffffff;
-    double pingInterval = 1.0;
-    int portNumber = 33333;
-    int sizeInBytes = 12;
-    int noPrint = 0;
-    int server = 0;
+    struct arg_struct args;
+    args.pingPacketCount = 0x7fffffff;
+    args.pingInterval = 1.0;
+    args.portNumber = 33333;
+    args.sizeInBytes = 12;
+    args.noPrint = 0;
+    args.server = 0;
 
     //loop to store all command arguments
-    while((opt = getopt(argc, argv, ":if:lrx")) != -1) 
+    while((opt = getopt(argc, argv, "c:i:p:s:nS")) != -1) 
     {
         //values stored according to flag found
         switch(opt) 
         {
             case 'c':
-                pingPacketCount = atoi(optarg);
+                args.pingPacketCount = atoi(optarg);
                 break;  
             case 'i': 
-                pingInterval = strtod(optarg, &ptr);
+                args.pingInterval = strtod(optarg, &ptr);
                 break;
             case 'p': 
-                portNumber = atoi(optarg);
+                args.portNumber = atoi(optarg);
                 break; 
             case 's': 
-                sizeInBytes = atoi(optarg);
+                args.sizeInBytes = atoi(optarg);
                 break; 
             case 'n': 
-                noPrint++;
+                args.noPrint++;;
                 break; 
             case 'S': 
-                server++;
+                args.server++;
                 break; 
         } 
     }
-    pthread_t client, server;
-    extern struct a    
 
+    //echo to stderr
+    fprintf(stderr, "Count %*d\n", 14, args.pingPacketCount);
+    fprintf(stderr, "Size %*d\n", 15, args.sizeInBytes);
+    fprintf(stderr, "Interval       %0.3f\n", args.pingInterval);
+    fprintf(stderr, "Port %*d\n", 15, args.portNumber);
+    fprintf(stderr, "Server_ip %*s\n", 10, argv[argc - 1]);
 
-
+    //loop to run threads
+    while(1)
+    {
+        //stand in for threads
+        printf("Put threads here\n");
+        sleep(1);
+    }
 }
