@@ -1,4 +1,7 @@
 #include "sighandler.h"
+#include "UDPEchoClient.c"
+#include "UDPEchoServer.c"
+#include <thread.h>
 
 int main(int argc, char *argv[]) 
 {
@@ -41,4 +44,9 @@ int main(int argc, char *argv[])
                 break; 
         } 
     }
+    pthread_t client, server;
+    extern struct a    
+
+
+
 }
