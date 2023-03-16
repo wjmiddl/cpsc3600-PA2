@@ -5,15 +5,18 @@
 #include <netdb.h>
 #include "Practical.h"
 
-int main(int argc, char *argv[]) {
+//int main(int argc, char *argv[]) {
+void* runserver(void *arg);
 
-  if (argc != 2) // Test for correct number of arguments
-    DieWithUserMessage("Parameter(s)", "<Server Port/Service>");
+ // if (argc != 2) // Test for correct number of arguments
+ //   DieWithUserMessage("Parameter(s)", "<Server Port/Service>");
+  struct arg_struct local;
+  local = &arg;
 
-  char *service = argv[1]; // First arg:  local port/service
+  char *service = arg; // First arg:  local port/service
 
   // Construct the server address structure
-  struct addrinfo addrCriteria;                   // Criteria for address
+  struct addrinfo addrCriteria;                    // Criteria for address
   memset(&addrCriteria, 0, sizeof(addrCriteria)); // Zero out structure
   addrCriteria.ai_family = AF_UNSPEC;             // Any address family
   addrCriteria.ai_flags = AI_PASSIVE;             // Accept on any address/port

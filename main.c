@@ -1,5 +1,7 @@
 #include "sighandler.h"
 #include "Practical.h"
+#include "UDPEchoClient.c"
+#include "UDPEchoServer.c"
 
 int main(int argc, char *argv[]) 
 {
@@ -51,6 +53,10 @@ int main(int argc, char *argv[])
     fprintf(stderr, "Port %*d\n", 15, args.portNumber);
     fprintf(stderr, "Server_ip %*s\n", 10, argv[argc - 1]);
 
+
+    pthread_t server, client;
+
+    pthread_create(&server, NULL, runserver, &args.portNumber);
     //loop to run threads
     while(1)
     {

@@ -6,11 +6,14 @@
 #include <netdb.h>
 #include "Practical.h"
 
-int main(int argc, char *argv[]) {
+//int main(int argc, char *argv[]) {
+  void* runclient(void *arg){
 
-  if (argc < 3 || argc > 4) // Test for correct number of arguments
-    DieWithUserMessage("Parameter(s)",
-        "<Server Address/Name> <Echo Word> [<Server Port/Service>]");
+//  if (argc < 3 || argc > 4) // Test for correct number of arguments
+//    DieWithUserMessage("Parameter(s)",
+//        "<Server Address/Name> <Echo Word> [<Server Port/Service>]");
+
+
 
   char *server = argv[1];     // First arg: server address/name
   char *echoString = argv[2]; // Second arg: word to echo
