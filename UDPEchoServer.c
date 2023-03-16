@@ -12,7 +12,7 @@ void* runserver(void *arg);
  //   DieWithUserMessage("Parameter(s)", "<Server Port/Service>");
 
   char *service;
-  service = &arg; // First arg:  local port/service
+  service = arg; // First arg:  local port/service
 
   // Construct the server address structure
   struct addrinfo addrCriteria;                    // Criteria for address

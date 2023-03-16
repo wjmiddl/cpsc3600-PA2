@@ -16,16 +16,24 @@ void* runclient(void *arg){
   local = arg;
 
 
-  char *server = argv[1];     // First arg: server address/name
-  char *echoString = argv[2]; // Second arg: word to echo
+//  char *server = argv[1];     // First arg: server address/name
+  int iserver = local.server;
+//  char *echoString = argv[2]; // Second arg: word to echo
+  int size = local.sizeInBytes;
+  double interval = local.pingInterval;
+  int pcount = local.pingPacketCount;
+  int port = local.portNumber;
 
-  size_t echoStringLen = strlen(echoString);
+  /* size_t echoStringLen = strlen(echoString);
   if (echoStringLen > MAXSTRINGLENGTH) // Check input length
-    DieWithUserMessage(echoString, "string too long");
+    DieWithUserMessage(echoString, "string too long"); */
 
   // Third arg (optional): server port/service
-  char *servPort = (argc == 4) ? argv[3] : "echo";
-
+//  char *servPort = (argc == 4) ? argv[3] : "echo";
+    char *servPort;
+    char *server;
+    sprintf(servPort, "%d", port);
+    sprintf(server, "%d", iserver);
   // Tell the system what kind(s) of address info we want
   struct addrinfo addrCriteria;                   // Criteria for address match
   memset(&addrCriteria, 0, sizeof(addrCriteria)); // Zero out structure
