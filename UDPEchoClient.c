@@ -27,6 +27,7 @@ void* runclient(void *arg){
   /* size_t echoStringLen = strlen(echoString);
   if (echoStringLen > MAXSTRINGLENGTH) // Check input length
     DieWithUserMessage(echoString, "string too long"); */
+    size_t echoLength = size;
 
   // Third arg (optional): server port/service
 //  char *servPort = (argc == 4) ? argv[3] : "echo";
@@ -55,11 +56,11 @@ void* runclient(void *arg){
     DieWithSystemMessage("socket() failed");
 
   // Send the string to the server
-  ssize_t numBytes = sendto(sock, echoString, echoStringLen, 0,
+  ssize_t numBytes = sendto(sock, echoString, echoLength 0,
       servAddr->ai_addr, servAddr->ai_addrlen);
   if (numBytes < 0)
     DieWithSystemMessage("sendto() failed");
-  else if (numBytes != echoStringLen)
+  else if (numBytes != echoLength)
     DieWithUserMessage("sendto() error", "sent unexpected number of bytes");
 
   // Receive a response
@@ -72,7 +73,7 @@ void* runclient(void *arg){
       (struct sockaddr *) &fromAddr, &fromAddrLen);
   if (numBytes < 0)
     DieWithSystemMessage("recvfrom() failed");
-  else if (numBytes != echoStringLen)
+  else if (numBytes != echoLength)
     DieWithUserMessage("recvfrom() error", "received unexpected number of bytes");
 
   // Verify reception from expected source
@@ -81,7 +82,7 @@ void* runclient(void *arg){
 
   freeaddrinfo(servAddr);
 
-  buffer[echoStringLen] = '\0';     // Null-terminate received data
+  buffer[echoLength] = '\0';     // Null-terminate received data
   printf("Received: %s\n", buffer); // Print the echoed string
 
   close(sock);
