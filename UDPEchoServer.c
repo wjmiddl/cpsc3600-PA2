@@ -10,10 +10,9 @@ void* runserver(void *arg);
 
  // if (argc != 2) // Test for correct number of arguments
  //   DieWithUserMessage("Parameter(s)", "<Server Port/Service>");
-  struct arg_struct local;
-  local = &arg;
 
-  char *service = arg; // First arg:  local port/service
+  char *service;
+  service = &arg; // First arg:  local port/service
 
   // Construct the server address structure
   struct addrinfo addrCriteria;                    // Criteria for address

@@ -7,12 +7,13 @@
 #include "Practical.h"
 
 //int main(int argc, char *argv[]) {
-  void* runclient(void *arg){
+void* runclient(void *arg){
 
 //  if (argc < 3 || argc > 4) // Test for correct number of arguments
 //    DieWithUserMessage("Parameter(s)",
 //        "<Server Address/Name> <Echo Word> [<Server Port/Service>]");
-
+  struct arg_struct local;
+  local = arg;
 
 
   char *server = argv[1];     // First arg: server address/name
